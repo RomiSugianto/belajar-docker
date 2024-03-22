@@ -1,7 +1,9 @@
+import os
 from flask import Flask
 
 app = Flask(__name__)
 
 @app.route("/")
 def hello_world():
-    return "<p>Hello, World!</p>"
+    name = os.environ.get('NAME', '')
+    return f"<p>Hello, World! from {name}</p>"
