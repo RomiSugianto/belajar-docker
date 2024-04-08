@@ -15,7 +15,7 @@ There are several types of Docker volumes:
 To create a named volume, you can use the following command:
 
 ```bash
-docker volume create my_volume
+docker volume create {volume_name}
 ```
 
 ## Using a Docker Volume
@@ -33,13 +33,15 @@ docker volume create mysql_data
 Then, run the MySQL container with the volume mounted:
 
 ```bash
-docker run -d \
+docker run -d --rm \
   --name mysql-container \
   -e MYSQL_ROOT_PASSWORD=my-secret-pw \
   -v mysql_data:/var/lib/mysql \
-  --memory=128m \
+  --memory=512m \
   --cpus=0.5 \
-  mysql:latest
+  mysql:latest \
+  --default-authentication-plugin=mysql_native_password
+
 ```
 
 In this example:
@@ -50,6 +52,7 @@ In this example:
 - `--memory=128m`: sets the maximum amount of memory that the container can use to 128MB.
 - `--cpus=0.5`: restricts the container to use a maximum of 0.5 CPU cores (50% of a single core).
 - `mysql:latest`: is the MySQL Docker image.
+- `--default-authentication-plugin=mysql_native_password` is added at the end of the docker run command to specifies the default authentication plugin for MySQL.
 
 Now, even if you stop or remove the mysql-container, the data stored in the /var/lib/mysql directory will persist in the mysql_data volume.
 Managing Docker Volumes
