@@ -1,6 +1,6 @@
 # Docker Commands
 
-## Set uo
+## Set up
 
 Create a directory for the project
 
