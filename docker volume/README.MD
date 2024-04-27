@@ -51,6 +51,13 @@ docker run -d --rm --name mysql-container -e MYSQL_ROOT_PASSWORD=my-secret-pw -v
 
 ```
 
+try to run the container without volume
+
+```bash
+docker run -d --rm --name mysql-container -e MYSQL_ROOT_PASSWORD=my-secret-pw --memory=512m --cpus=0.5 mysql:latest --default-authentication-plugin=mysql_native_password
+
+```
+
 In this example:
 
 - `-e`: This flag is used to set environment variables inside the Docker container.
