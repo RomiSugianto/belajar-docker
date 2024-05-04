@@ -76,3 +76,63 @@ You can list, inspect, and remove Docker volumes using the following commands:
 - `docker volume ls`: List all Docker volumes.
 - `docker volume inspect <volume_name>`: Inspect details about a specific volume.
 - `docker volume rm <volume_name>`: Remove a specific volume.
+
+### Example: Nginx
+
+Let's say you have a Nginx running in a Docker container. You use a custome index.html to be served with nginx, you can use host volume to eliminate rebuild the dockerfile everytime you update your index.html.
+
+First, make the index.html to be served by nginx:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to NGINX</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to NGINX</h1>
+        <p>This is a simple webpage volumed on host served by NGINX inside a Docker container.</p>
+        <p>Feel free to explore and customize!</p>
+    </div>
+</body>
+</html>
+
+
+```
+
+Then, run the nginx container with the file index.html mounted:
+
+```bash
+docker run -d --rm --name nginx -p 8081:80 -v ./index.html:/usr/share/nginx/html/index.html nginx:alpine 
+
+```
+
+Then try to update your index.html file and check if the web served by nginx is also changed
