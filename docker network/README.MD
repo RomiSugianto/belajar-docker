@@ -35,8 +35,8 @@ docker network create my_network
 Then, run the containers and connect them to the network:
 
 ```bash
-docker run -d --name web-server --network my_network nginx:alpine
-docker run -d --name db-server --network my_network mysql:latest
+docker run -d --rm --name web-server --network my_network nginx:alpine
+docker run -d --rm --name web-server-1 --network my_network nginx:alpine
 ```
 
 In this example:
