@@ -39,6 +39,14 @@ docker run -d --rm --name web-server --network my_network nginx:alpine
 docker run -d --rm --name web-server-1 --network my_network nginx:alpine
 ```
 
+Then, run the container and do not connect them to the network:
+
+```bash
+docker run -d --rm --name web-server-2 nginx:alpine
+```
+
+check each container which connect and can comunicate to which
+
 In this example:
 
 - `--network my_network` connects both containers to the my_network Docker network.
