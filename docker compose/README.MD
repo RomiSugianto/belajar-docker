@@ -23,13 +23,13 @@ Docker Compose is a tool that allows you to define and manage multi-container Do
 ```yaml
 services:
     web:
-    image: nginx:alpine
-    ports:
-        - "80:80"
+        image: nginx:alpine
+        ports:
+            - "80:80"
     db:
-    image: postgres:alpine
-    environment:
-        POSTGRES_PASSWORD: example
+        image: postgres:alpine
+        environment:
+            POSTGRES_PASSWORD: example
 ```
 
 **Start Your Application**:
