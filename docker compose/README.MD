@@ -35,7 +35,7 @@ services:
 **Start Your Application**:
 
 ```bash
-docker-compose up
+docker-compose up -d
 ```
 
 **Stop Your Application**:
