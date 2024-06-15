@@ -1,5 +1,8 @@
 services:
   flask_app:
+    build:
+      context: ./base-image/
+      dockerfile: Dockerfile
     image: flask-redis
     container_name: flask-redis
     ports:
