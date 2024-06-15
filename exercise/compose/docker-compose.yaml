@@ -1,9 +1,17 @@
 services:
     web:
+        container_name: nginx
         image: nginx:alpine
         ports:
             - "81:80"
+        volumes:
+          - ./filetest:/filetest
     db:
         image: postgres:alpine
+        container_name: postgres
         environment:
             POSTGRES_PASSWORD: example
+        volumes:
+          - postgres:/var/lib/postgresql/data
+volumes:
+  postgres:
