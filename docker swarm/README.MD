@@ -87,7 +87,7 @@ docker service ls
 Inspect a Service:
 
 ```sh
-docker service inspect <SERVICE-ID>
+docker service inspect <SERVICE-ID>/<SERVICE-NAME>
 ```
 
 Scale a Service:
