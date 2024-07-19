@@ -8,7 +8,7 @@ Fill out the **Dockerfile** and **docker-compose.yaml** to build and run a stack
 
 1. use image **python:alpine**
 2. use directory **/app** as a workdir (working directory)
-3. copy all file and dir in host direcotory to /app on container directory
+3. copy all file and dir in host directory to /app on container directory
 4. install all dependencies using this command **pip install --no-cache-dir -r requirements.txt**
 5. use this command as entrypoint of the container **["python", "app.py"]**
 
