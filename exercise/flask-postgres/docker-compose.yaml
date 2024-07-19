@@ -1,0 +1,40 @@
+services:
+  web:
+    build:
+      context: ./app
+    image: flask-postgres
+    container_name: flask-postgres
+    ports:
+      - "82:5000"
+    environment:
+      POSTGRES_USER: flaskpostgres
+      POSTGRES_PASSWORD: flaskpostgres
+      POSTGRES_DB: flaskpostgres
+    depends_on:
+      - db
+    networks:
+      flask-postgres:
+         ipv4_address: "10.1.1.3"
+
+  db:
+    image: postgres:alpine
+    container_name: postgres
+    environment:
+      POSTGRES_USER: flaskpostgres
+      POSTGRES_PASSWORD: flaskpostgres
+      POSTGRES_DB: flaskpostgres
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    networks:
+      flask-postgres:
+         ipv4_address: "10.1.1.4"
+
+volumes:
+  postgres:
+
+networks:
+  flask-postgres:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: "10.1.1.0/24"

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PostgreSQL Data</title>
+</head>
+<body>
+    <h1>PostgreSQL Data</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Key</th>
+            <th>Value</th>
+        </tr>
+        {% for item in data %}
+        <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.key }}</td>
+            <td>{{ item.value }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+    <h2>Add Data</h2>
+    <form method="POST">
+        <label for="key">Key:</label>
+        <input type="text" id="key" name="key" required>
+        <label for="value">Value:</label>
+        <input type="text" id="value" name="value" required>
+        <button type="submit">Add</button>
+    </form>
+</body>
+</html>
